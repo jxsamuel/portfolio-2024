@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>jacob samuel</title>
+
+        <link rel="stylesheet" href="/css/global.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header class="header">
+            
+            <input style="visibility: hidden;" class="menu-btn" type="checkbox" id="menu-btn" disabled />
+            
+            <label class="menu-icon" for="menu-btn"><span style="visibility: hidden;" class="navicon"></span></label>
+
+            <ul class="menu" id="work-content">
+                <div>
+                    <div id="work">
+                        <img style="margin-top: 62%;" width="100%" src='/jacob_samuel_resume.png'>
+                    </div>
+                </div>
+            </ul>
+            
+            <ul class="menu" id="about-content">
+                <div>
+                    <p id="about">
+                        
+                    </p>
+                </div>
+            </ul>
+
+            <ul class="menu" id="contact-content">
+                <div>
+                    <h1>Let's work together!</h1>
+                    <p id="contact">
+                        Email: jacobdustinsamuel@gmail.com
+                        <br>
+                        <br>
+                        Phone: (720) 882-8129
+                        <br>
+                        <br>
+                        <span>Social: <span><a style="display: inline;" href="">Linkedin</a></span> (this doesn't actually go anywhere yet. my linkedin is currently....... not to standard.)</span>
+                    </p>
+                </div>
+            </ul>
+
+        </header>
+
+        <div class="wave-container">
+
+        
+            <div class="title">polka dots and moonbeams</div>
+
+            <div class="name">jacob samuel</div>
+            <div class="job-title">developer & designer</div>
+
+            <div class="btn-container">
+                <input class="menu-btn" type="checkbox" id="about-menu-btn" value="about"/>
+            
+                <label class="about-btn" id="about-btn" for="about-menu-btn"><span id="about-me-btn">about</span></label>
+                
+                <input class="menu-btn" type="checkbox" id="contact-menu-btn" value="contact" />
+            
+                <label class="connect-btn" id="contact-btn" for="contact-menu-btn"><span>contact</span></label>
+            </div>
+
+            <canvas></canvas>
+
+        </div>
+
+        <div class="left-section">
+            <div class="tab-bar">
+            
+                <div class="logo">i!?</div>
+                <div id="active-tab" class="active-tab">home</div>
+
+            </div>
+
+            <div class="left-content-container">
+            
+                <div class="yellow-circle"></div>
+
+            </div>
+
+            <input style="display: none;" class="menu-btn" type="checkbox" value="work" id="work-menu-btn"/>
+            
+            <label id="portfolio-btn" for="work-menu-btn"><span id="work-btn">work</span></label>
+        </div>
+
+        <script>
+
+            document.getElementById("work-menu-btn").addEventListener( "change", () => {
+               if (document.getElementById("work-menu-btn").checked == true) {
+                document.getElementById("portfolio-btn").style.backgroundColor = "#899878";
+                document.getElementById("portfolio-btn").style.letterSpacing = "5px";
+                document.getElementById("about-content").style.height = "0vh";
+                document.getElementById("work-content").style.height = "75.3vh";
+                document.getElementById('active-tab').innerHTML = "my work";
+                document.getElementById('work-btn').innerHTML = "[X] Close";
+                document.getElementById('work-btn').style.fontWeight = "700";
+               } 
+        
+               else if (document.getElementById("work-menu-btn").checked == false) {
+                document.getElementById("portfolio-btn").style.backgroundColor = "";
+                document.getElementById("portfolio-btn").style.letterSpacing = "";
+                document.getElementById("work-content").style.height = "0vh";
+                document.getElementById('active-tab').innerHTML = "home";
+                document.getElementById('work-btn').innerHTML = "work";
+                document.getElementById('work-btn').style.fontWeight = "400";
+               } 
+        
+            });
+
+            document.getElementById("about-menu-btn").addEventListener( "change", () => {
+               if (document.getElementById("about-menu-btn").checked == true ) {
+                document.getElementById("about-btn").style.backgroundColor = "#899878";
+                document.getElementById("about-btn").style.letterSpacing = "5px";
+                document.getElementById("work-content").style.height = "0vh";
+                document.getElementById("about-content").style.height = "75.3vh";
+                document.getElementById('active-tab').innerHTML = "about me";
+                document.getElementById('about-me-btn').innerHTML = "[X] Close";
+                document.getElementById('about-btn').style.fontWeight = "700";
+                document.getElementById('about').innerHTML += "<p> I am a multidisciplinary developer and artist with experience working with HTML, Javascript, CSS, C#, Angular, Typescript, and Python. My background in visual arts and software development inform my creative, but strategic approach. <br> <br> I am fueled by my passion for understanding the nuances of how the world works. I consider myself a forever student, eager to build my skills in software development, creative arts, and marketing; as well as my emotional intelligence, in order to understand the world around me more effectively and bring inspiring ideas to life. I believe that actively learning and understanding what the needs of others are and being able to apply different communication skills and tactics to individuals and situations is one of the most powerful tools. My hunger for knowledge, and determination to solve problems, has contributed to my success as a developer, father, partner, artist, and team member. <br> <br> I believe that mindfulness and creativity in the workplace are as crucial to success as discipline and efficiency. </p>";
+               } 
+    
+               else if (document.getElementById("about-menu-btn").checked == false ) {
+                document.getElementById("about-btn").style.backgroundColor = "";
+                document.getElementById("about-btn").style.letterSpacing = "";
+                document.getElementById("about-content").style.height = "0vh";
+                document.getElementById('about').innerHTML = "";
+                document.getElementById('about-me-btn').innerHTML = "about";
+                document.getElementById('active-tab').innerHTML = "home";
+                document.getElementById('about-btn').style.fontWeight = "400";
+               } 
+            });
+
+            document.getElementById("contact-menu-btn").addEventListener( "change", () => {
+            if (document.getElementById("contact-menu-btn").checked == true) {
+                document.getElementById("contact-btn").style.backgroundColor = "#899878";
+                document.getElementById("contact-btn").style.letterSpacing = "5px";
+                document.getElementById("contact-content").style.height = "0vh";
+                document.getElementById("contact-content").style.height = "75.3vh";
+                document.getElementById('active-tab').innerHTML = "contact";
+                document.getElementById('contact-btn').innerHTML = "[X] Close";
+                document.getElementById('contact-btn').style.fontWeight = "700";
+            } 
+        
+            else if (document.getElementById("contact-menu-btn").checked == false) {
+                document.getElementById("contact-content").style.height = "0vh";
+                document.getElementById("contact-btn").style.backgroundColor = "";
+                document.getElementById("contact-btn").style.letterSpacing = "";
+                document.getElementById('active-tab').innerHTML = "home";
+                document.getElementById('contact-btn').innerHTML = "contact";
+                document.getElementById('contact-btn').style.fontWeight = "400";
+            } 
+        
+            });
+        </script>
+    
+    <script>
+    
+       
+    </script>
+    
+
+    </body>
+
+   
+    <script>
+
+        const canvas = document.querySelector('canvas');
+        
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Wave {
+            constructor(
+                canv,
+                maxAmplitude = 80,
+                length = 135,
+                frequency = 10,
+                bgOpacity = 1,
+                y,
+            ) {
+                this.canvas = canv;
+                this.ctx = this.canvas.getContext('2d');
+                this.maxAmplitude = maxAmplitude;
+                this.amplitude = 0;
+                this.length = length;
+                this.frequency = frequency;
+                this.increment = Math.random() * 180;
+                this.bgOpacity = bgOpacity;
+                this.y = y || this.canvas.height / 2.3;
+
+                this.frameCallback = () => {
+                this.draw(this.ctx);
+                requestAnimationFrame(this.frameCallback);
+                };
+            }
+
+            draw(c) {
+                c.beginPath();
+
+                this.ctx.fillStyle = '#222725';
+
+                c.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+
+                for (let i = 0; i < this.canvas.width; i += 1) {
+                c.lineTo(
+                    i,
+                    this.y + Math.sin(i / this.length + this.increment) * this.amplitude,
+                );
+                }
+
+                c.stroke();
+                c.closePath();
+
+                this.amplitude = Math.sin(this.increment) * this.maxAmplitude;
+                this.increment -= this.frequency / 1500;
+            }
+
+            animate() {
+                this.frameCallback();
+            }
+        }
+
+        const wave = new Wave(canvas);
+
+        wave.animate();
+
+    </script>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Jacob Samuel</title>
+
+        <link rel="stylesheet" href="/css/global.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="scroll">
+
+        <header class="header">
+            <a href="/index.html" class="logo">i!?</a>
+            
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            
+            <ul class="menu">
+              <li><a href="/index.html">home</a></li>
+              <li><a href="/projects.html">projects</a></li>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/contact.html">contact</a></li>
+            </ul>
+
+        </header>
+
+        <div style="border-left: solid 1px black; margin: 68px; z-index: 1001; position: absolute; height: 112vh;">
+
+        
+            <div style="position: absolute; z-index: 1000; font-size: 65px; font-weight: 100; transform: translate(85px, 60px);">"it feels like fun."</div>
+
+            
+
+            <canvas></canvas>
+
+        
+        </div>
+    </body>
+
+    <script>
+
+        const canvas = document.querySelector('canvas');
+        
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Wave {
+            constructor(
+                canv,
+                maxAmplitude = 150,
+                length = 70,
+                frequency = 30,
+                bgOpacity = 1,
+                y,
+            ) {
+                this.canvas = canv;
+                this.ctx = this.canvas.getContext('2d');
+                this.maxAmplitude = maxAmplitude;
+                this.amplitude = 0;
+                this.length = length;
+                this.frequency = frequency;
+                this.increment = Math.random() * 180;
+                this.bgOpacity = bgOpacity;
+                this.y = y || this.canvas.height / 2;
+
+                this.frameCallback = () => {
+                this.draw(this.ctx);
+                requestAnimationFrame(this.frameCallback);
+                };
+            }
+
+            draw(c) {
+                c.beginPath();
+
+                this.ctx.fillStyle = `rgba(255,255,255,${this.bgOpacity})`;
+
+                c.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+
+                for (let i = 0; i < this.canvas.width; i += 1) {
+                c.lineTo(
+                    i,
+                    this.y + Math.sin(i / this.length + this.increment) * this.amplitude,
+                );
+                }
+
+                c.stroke();
+                c.closePath();
+
+                this.amplitude = Math.sin(this.increment) * this.maxAmplitude;
+                this.increment -= this.frequency / 1500;
+            }
+
+            animate() {
+                this.frameCallback();
+            }
+        }
+
+        const wave = new Wave(canvas);
+
+        wave.animate();
+
+    </script>
+
+</html>
